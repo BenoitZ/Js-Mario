@@ -7,7 +7,7 @@ function MarioBros (titre, console, annee, description){
     this.description = description
 };
 
-    let marioBros1      = new MarioBros ("MarioBros", "Atari", 1983, "Lorem 1 ipsum dolor sit amet consectetur adipisicing elit. Tenetur optio quas voluptatem illo amet sint quidem cupiditate vero dolorum illum!");
+    let marioBros1      = new MarioBros ("MarioBros", "Atari", 1983, "Un jour, le royaume Champignon fut envahi par les Koopas, une tribu de tortues reconnues pour leur magie noire. Les calmes et pacifiques habitants du royaume furent transformés en pierres, en briques et même en plantes! Le royaume est tombé en ruines! La seule capable de briser le sort est la princesse Toadstool, la fille du roi Champignon. Malheureusement, elle est détenue par le méchant roi Bowser.");
     let marioBros2      = new MarioBros ("SuperMarioBros", "Nes", 1985, "Lorem 2 ipsum dolor sit amet consectetur adipisicing elit. Tenetur optio quas voluptatem illo amet sint quidem cupiditate vero dolorum illum!");
     let marioBros3      = new MarioBros ("SuperMarioBrosSpecial", "Sharp X1", 1986, "Lorem 3 ipsum dolor sit amet consectetur adipisicing elit. Tenetur optio quas voluptatem illo amet sint quidem cupiditate vero dolorum illum!");
     let marioBros4      = new MarioBros ("SuperMariosBros2", "Famicom", 1988, "Lorem 4 ipsum dolor sit amet consectetur adipisicing elit. Tenetur optio quas voluptatem illo amet sint quidem cupiditate vero dolorum illum!");
@@ -33,9 +33,9 @@ let div = document.getElementById('affichage');
 
 div.innerHTML = Object.values(maCollection).map((element, index) => `
     <div class="carte">
-        <h1>Titre : ${element.titre} </h1>
-        <h2>Console : ${element.console} </h2>
-        <h3>Année : ${element.annee} </h3>
+        <h1>${element.titre} </h1>
+        <h3>${element.annee} </h3>
+        <h2 class="consoleCarte">Console : ${element.console} </h2>
         <button class="popUp" id= ${"marioBros"+(index+=1)}> En savoir plus </button>
     </div>
 `).join("");
@@ -61,9 +61,7 @@ for (let index= 0; index<maPopUp.length; index++) {
         p.innerText = maCollection[key].description;
 
         let image = document.getElementById('image');
-            image.setAttribute("src", "marioBros"+[key]+".jpg");
-            console.log(image);
-
+            image.src = 'img/' + key + '.jpg';
         });   
 }
 
