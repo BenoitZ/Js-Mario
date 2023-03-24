@@ -34,8 +34,8 @@ function MarioBros (titre, console, annee, description){
     `).join("");
 
     const maPopUp = document.getElementsByClassName('popUp');
-    const h2 = document.getElementById('titrePop');
-    const p = document.getElementById('texte');
+    const titrePop = document.getElementById('titrePop');
+    const paraPop = document.getElementById('texte');
     const classL = document.getElementById('popupp');
     const fermeture = document.getElementById('popup');
 
@@ -44,8 +44,8 @@ function MarioBros (titre, console, annee, description){
             let key = e.target.id;
             classL.classList.add('active');
             fermeture.classList.remove('active');
-            h2.innerText = maCollection[key].titre;
-            p.innerText = maCollection[key].description;
+            titrePop.innerText = maCollection[key].titre;
+            paraPop.innerText = maCollection[key].description;
             let image = document.getElementById('image');
                 image.src = 'img/' + key + '.jpg';
             });   
