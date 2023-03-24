@@ -79,9 +79,10 @@ h2{
 .carte{
     line-height: 2;
     color: white;
-    margin: 2%;
+    margin: auto;
     border: solid #b74831 4px;
-    width: 37%;
+    width: 800px;
+    height: 400px;
     text-align: center;
     font-size: 0.9em;
     border-radius: 10px;
@@ -90,9 +91,10 @@ h2{
 #affichage{
     border: none;
     display: flex;
-    justify-content: space-between;
+    /* margin: auto; */
+    /* justify-content: space-between; */
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 h2.consoleCarte{
@@ -105,7 +107,79 @@ h2.consoleCarte{
 
 
 
+/*AJOUT CARROUSEL */
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body{
+    background-image: url('https://img.freepik.com/photos-premium/appareil-photo-vintage-comme-fond-ecran_39155-40.jpg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-size: cover;
+} */
+
+#carroussel{
+    width: 800px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+}
+
+#container{
+    width: 800px;
+    height: 400px;
+}
+
+i{
+    color: rgba(255, 255, 255, 0.339);
+    font-size: 1.6em;
+}
+
+.fa-solid{
+    color: #fafafa;
+    position: absolute; 
+    top: 50%; 
+}
+
+#g{
+    left: 4%;
+}
+
+#d{
+    right: 4%;
+}
+
+#g:hover{
+    transform: scale(2.1);
+    color: rgb(255, 255, 255);
+    transition: 1s;
+    cursor: pointer;
+}
+
+#d:hover{
+    transform: scale(2.1);
+    color: rgb(255, 255, 255);
+    transition: 1s;
+    cursor: pointer;
+}
+
+.photo{
+    width: 800px;
+    height: 400px;
+    margin: 0;
+    display: inline-block;
+    background-size: cover;
+    border: solid white 1px;
+}
 
 
 

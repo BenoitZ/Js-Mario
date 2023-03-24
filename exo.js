@@ -1,5 +1,3 @@
-
-
 function MarioBros (titre, console, annee, description){
     this.titre = titre,
     this.console = console,
@@ -17,99 +15,78 @@ function MarioBros (titre, console, annee, description){
     let marioBros8      = new MarioBros ("SuperMarioLand2", "GameBoy", 1992, "Lorem 8 ipsum dolor sit amet consectetur adipisicing elit. Tenetur optio quas voluptatem illo amet sint quidem cupiditate vero dolorum illum!");
     let marioBros9      = new MarioBros ("SuperMarioWorld", "SuperNintendo", 1995, "Lorem 9 ipsum dolor sit amet consectetur adipisicing elit. Tenetur optio quas voluptatem illo amet sint quidem cupiditate vero dolorum illum!");
     let marioBros10     = new MarioBros ("SuperMario64", "Nintendo64", 1996, "Lorem 10 ipsum dolor sit amet consectetur adipisicing elit. Tenetur optio quas voluptatem illo amet sint quidem cupiditate vero dolorum illum!");
+    let maCollection = {...{marioBros1}, ...{marioBros2}, ...{marioBros3},
+                        ...{marioBros4}, ...{marioBros5}, ...{marioBros6}, 
+                        ...{marioBros7}, ...{marioBros8}, ...{marioBros9}, ...{marioBros10}};
 
+    for (const key in maCollection){
+        console.log(maCollection[key]);
+    };
 
-let maCollection = {...{marioBros1}, ...{marioBros2}, ...{marioBros3},
-                    ...{marioBros4}, ...{marioBros5}, ...{marioBros6}, 
-                    ...{marioBros7}, ...{marioBros8}, ...{marioBros9}, ...{marioBros10}};
+    let div = document.getElementById('affichage');
+    div.innerHTML = Object.values(maCollection).map((element, index) => `
+        <div class="carte">
+            <h1>${element.titre} </h1>
+            <h3>${element.annee} </h3>
+            <h2 class="consoleCarte">Console : ${element.console} </h2>
+            <button class="popUp" id= ${"marioBros"+(index+=1)}> En savoir plus </button>
+        </div>
+    `).join("");
 
-for (const key in maCollection){
-    console.log(maCollection[key]);
-};
+    const maPopUp = document.getElementsByClassName('popUp');
+    const h2 = document.getElementById('titrePop');
+    const p = document.getElementById('texte');
+    const classL = document.getElementById('popupp');
+    const fermeture = document.getElementById('popup');
 
-
-
-let div = document.getElementById('affichage');
-
-div.innerHTML = Object.values(maCollection).map((element, index) => `
-    <div class="carte">
-        <h1>${element.titre} </h1>
-        <h3>${element.annee} </h3>
-        <h2 class="consoleCarte">Console : ${element.console} </h2>
-        <button class="popUp" id= ${"marioBros"+(index+=1)}> En savoir plus </button>
-    </div>
-`).join("");
-
-
-const maPopUp = document.getElementsByClassName('popUp');
-const h2 = document.getElementById('titrePop');
-const p = document.getElementById('texte');
-const classL = document.getElementById('popupp');
-const fermeture = document.getElementById('popup');
-
-
-for (let index= 0; index<maPopUp.length; index++) {
-
-    maPopUp[index].addEventListener('click', (e)=>{
-
-        let key = e.target.id;
-
-        classL.classList.add('active');
-        fermeture.classList.remove('active');
-
-        h2.innerText = maCollection[key].titre;
-        p.innerText = maCollection[key].description;
-
-        let image = document.getElementById('image');
-            image.src = 'img/' + key + '.jpg';
-        });   
-}
+    for (let index= 0; index<maPopUp.length; index++) {
+        maPopUp[index].addEventListener('click', (e)=>{
+            let key = e.target.id;
+            classL.classList.add('active');
+            fermeture.classList.remove('active');
+            h2.innerText = maCollection[key].titre;
+            p.innerText = maCollection[key].description;
+            let image = document.getElementById('image');
+                image.src = 'img/' + key + '.jpg';
+            });   
+    }
 
     fermeture.addEventListener('click', ()=>{
         classL.classList.remove('active');
         });  
 
 
-        // CLASSLIST
 
+//AJOUT CAROUSEL
 
-        // <button class="popUp" id= ${"marioBros"+(index+=1)}> En savoir plus </button>
+document.body.onload = function() {
+    const nbr = 10;
+    var p=0;
+    var container = document.getElementById('container');
+    var g = document.getElementById('g');
+    var d = document.getElementById('d');
+        container.style.width = (800*nbr) + "px";
 
-
-
-// const cartes = document.getElementsByClassName('carte');
-
-// cartes.addEventListener('click', ()=>{
-
-//     cartes.classList.add
-// });
-
-
-
-
-
-
-
-
-// Version avec For in
-
-// for (const key in maCollection) {
-
-//     let h2 = document.createElement('h2');
-//     let h3 = document.createElement('h3');
-//     let h4 = document.createElement('h4');
-//     let div2 = document.createElement('div');
-//     let div = document.getElementById('affichage');
-
-//     h2.textContent = " - Titre : " + maCollection[key].titre + " -";
-//     h3.textContent = "Console : " + maCollection[key].console;
-//     h4.textContent = "Année : " + maCollection[key].annee;
-    
-//     div.appendChild(div2);
-//     div2.appendChild(h2);
-//     div2.appendChild(h3);
-//     div2.appendChild(h4);
-    
-// }
+    for(i=1; i<=nbr; i++){
+        div = document.createElement('div');
+        div.className = 'photo';
+        div.style.backgroundImage = "url('img/" +i+ ".jpg')";
+        container.appendChild(div);
+    }
+    g.onclick = function(){
+        if(p>-nbr+1){
+            p--;  
+            container.style.transform="translate("+ p * 800 + "px)";
+            container.style.transition = "all 1s ease";
+         }
+        }
+    d.onclick = function(){
+        if(p<0){
+            p++;  
+            container.style.transform="translate("+ p * 800 + "px)";
+            container.style.transition = "all 1s ease";
+         }
+        }
+}
 
 
