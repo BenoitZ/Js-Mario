@@ -26,8 +26,8 @@ function MarioBros (titre, console, annee, description){
     let div = document.getElementById('affichage');
     div.innerHTML = Object.values(maCollection).map((element, index) => `
         <div class="carte">
-            <h1>${element.titre} </h1>
-            <h3>${element.annee} </h3>
+            <h1 class="titreCarte">${element.titre} </h1>
+            <h3 class="anneeCarte">${element.annee} </h3>
             <h2 class="consoleCarte">Console : ${element.console} </h2>
             <button class="popUp" id= ${"marioBros"+(index+=1)}> En savoir plus </button>
         </div>
@@ -65,7 +65,7 @@ document.body.onload = function() {
     var container = document.getElementById('container');
     var g = document.getElementById('g');
     var d = document.getElementById('d');
-        container.style.width = (800*nbr) + "px";
+        container.style.width = (350*nbr) + "px";
 
     for(i=1; i<=nbr; i++){
         div = document.createElement('div');
@@ -76,14 +76,14 @@ document.body.onload = function() {
     g.onclick = function(){
         if(p>-nbr+1){
             p--;  
-            container.style.transform="translate("+ p * 800 + "px)";
+            container.style.transform="translate("+ p * 350 + "px)";
             container.style.transition = "all 1s ease";
          }
         }
     d.onclick = function(){
         if(p<0){
             p++;  
-            container.style.transform="translate("+ p * 800 + "px)";
+            container.style.transform="translate("+ p * 350 + "px)";
             container.style.transition = "all 1s ease";
          }
         }
